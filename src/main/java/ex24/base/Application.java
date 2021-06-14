@@ -9,40 +9,41 @@ import java.util.Scanner;
 
 
 public class Application {
+    private AnagramChecker checker;
+
     public static void main(String[] args) {
+        Application app = new Application();
 
         // get two strings from the user
         System.out.println("Enter two strings and I'll tell you if they are anagrams: \n" +
                 "Enter the first string: ");
-        String string1 = readString();
+        String string1 = app.readString();
         System.out.println("Enter the second string: ");
-        String string2 = readString();
+        String string2 = app.readString();
 
         // check whether it's an anagram or not
-        String result = isAnagram(string1, string2);
+        String result = app.isAnagram(string1, string2);
 
         // print result
         System.out.println(result);
 
     }
 
-    private static String readString() {
+    public Application() {
+        this.checker = new AnagramChecker();
+    }
+    public String readString() {
         Scanner in = new Scanner(System.in);
         return in.nextLine();
     }
 
-    public static String isAnagram(String string1, String string2) {
-        if (string1.length() != string2.length()) {
-            return String.format("%s and %s are not the same length. They are not anagrams.", string1, string2);
-        } else if(alphabetize(string1).equals(alphabetize(string2))) {
-            return String.format("%s and %s are anagrams.", string1, string2);
-        } else {
-            return String.format("%s and %s are not anagrams.", string1, string2);
-        }
+    public String isAnagram(String string1, String string2) {
+        return this.checker.isAnagram(string1, string2);
     }
 
-    private static String alphabetize(String string) {
+    public String reorder(String string) {
         String str = string.toLowerCase();
+        str = str.replaceAll(" ", "");
         char[] characterArray = str.toCharArray();
         Arrays.sort(characterArray);
         return (new String(characterArray));
