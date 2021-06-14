@@ -4,7 +4,6 @@ package ex24.base;
  *  Copyright 2021 Ursula Shaw
  */
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -28,7 +27,6 @@ public class Application {
         System.out.println(result);
 
     }
-
     public Application() {
         this.checker = new AnagramChecker();
     }
@@ -39,13 +37,5 @@ public class Application {
 
     public String isAnagram(String string1, String string2) {
         return this.checker.isAnagram(string1, string2);
-    }
-
-    public String reorder(String string) {
-        String str = string.toLowerCase();
-        str = str.replaceAll(" ", "");
-        char[] characterArray = str.toCharArray();
-        Arrays.sort(characterArray);
-        return (new String(characterArray));
     }
 }
