@@ -1,4 +1,4 @@
-package ex25;
+package ex25.base;
 
 import ex25.base.Application;
 import org.junit.jupiter.api.DisplayName;
